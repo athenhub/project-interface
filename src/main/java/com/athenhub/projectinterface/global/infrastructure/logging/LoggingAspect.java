@@ -1,4 +1,4 @@
-package com.athenhub.projectinterface.global.log;
+package com.athenhub.projectinterface.global.infrastructure.logging;
 
 import com.athenhub.projectinterface.global.util.GsonUtils;
 import jakarta.servlet.http.HttpServletRequest;

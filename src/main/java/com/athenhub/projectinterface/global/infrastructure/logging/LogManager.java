@@ -1,4 +1,4 @@
-package com.athenhub.projectinterface.global.log;
+package com.athenhub.projectinterface.global.infrastructure.logging;
 
 import com.athenhub.projectinterface.global.util.MdcUtils;
 import lombok.RequiredArgsConstructor;
@@ -35,6 +35,7 @@ public class LogManager {
       final String requestUri,
       final String methodInfo,
       final String logMessage) {
+
     log.info("{} {}", formLogMessage(httpMethod, requestUri, methodInfo), logMessage);
   }
 
