@@ -1,6 +1,6 @@
 package com.athenhub.projectinterface;
 
-import com.athenhub.projectinterface.auth.infrastructure.AuthenticatedUser;
+import com.athenhub.commonmvc.security.AuthenticatedUser;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
