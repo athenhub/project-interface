@@ -35,22 +35,42 @@ repositories {
         }
     }
 }
+ext {
+    set('springCloudVersion', "2025.0.0")
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-
-    // 인증, 인가
     implementation 'org.springframework.boot:spring-boot-starter-security'
-    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
-    implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
+    // loki
+    implementation 'com.github.loki4j:loki-logback-appender:2.0.0'
+
+    // zipkin
+    implementation 'io.micrometer:micrometer-tracing-bridge-brave'
+    implementation 'io.zipkin.reporter2:zipkin-reporter-brave'
+
+    // spring cloud
+    implementation 'org.springframework.cloud:spring-cloud-starter-config'
+    implementation 'org.springframework.cloud:spring-cloud-starter-loadbalancer'
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+    runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
+
+    // PostgreSQL
+    implementation 'org.postgresql:postgresql'
+
 
     // common
-    implementation 'com.athenhub:common-mvc:1.0.0'
-
-    // gson
-    implementation 'com.google.code.gson:gson'
+    implementation 'com.athenhub:common-mvc:1.1.0'
 
     // lombok
     compileOnly 'org.projectlombok:lombok'
