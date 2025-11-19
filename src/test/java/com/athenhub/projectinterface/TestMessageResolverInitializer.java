@@ -1,6 +1,6 @@
 package com.athenhub.projectinterface;
 
-import com.athenhub.common.message.MessageResolver;
+import com.athenhub.commoncore.message.MessageResolver;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.test.util.ReflectionTestUtils;
 
