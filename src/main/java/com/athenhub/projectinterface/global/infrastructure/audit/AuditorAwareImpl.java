@@ -4,7 +4,7 @@ import java.util.Optional;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.oauth2.jwt.Jwt;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 /**
@@ -39,9 +39,12 @@ public class AuditorAwareImpl implements AuditorAware<String> {
   public Optional<String> getCurrentAuditor() {
     String username = "SYSTEM";
     Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-    if (authentication != null && authentication.getPrincipal() instanceof Jwt jwt) {
-      username = jwt.getClaim("preferred_username");
+
+    if (authentication != null && authentication.getPrincipal() != null) {
+      UserDetails details = (UserDetails) authentication.getPrincipal();
+      username = details.getUsername();
     }
+
     return Optional.ofNullable(username);
   }
 }
