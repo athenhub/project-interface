@@ -8,7 +8,9 @@ spring:
       discovery:
         enabled: true
         service-id: ${CLOUD_SERVICE_ID}
-
+  docker:
+    compose:
+      lifecycle-management: start_only
 eureka:
   instance:
     prefer-ip-address: false
